@@ -32,7 +32,8 @@ class AppDataContainer(private val context: Context) : AppContainer {
     /**
      * Implementation for [ItemsRepository]
      */
+    //llamo a getDatabase() en la clase InventoryDatabase que llama a .itemDao() para crear la instancia de Dao
     override val itemsRepository: ItemsRepository by lazy {
-        OfflineItemsRepository()
+        OfflineItemsRepository(InventoryDatabase.getDatabase(context).itemDao())
     }
 }
