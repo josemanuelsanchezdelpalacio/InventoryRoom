@@ -20,9 +20,7 @@ abstract class InventoryDatabase : RoomDatabase() {
         //si Instance no es nula, devuelve it, si lo es crea una nueva instancia de la base de datos
         fun getDatabase(context: Context): InventoryDatabase {
             return Instance ?: synchronized(this) {
-                Room.databaseBuilder(context, InventoryDatabase::class.java, "item_database")
-                    .build()
-                    .also { Instance = it }
+                Room.databaseBuilder(context, InventoryDatabase::class.java, "item_database").build().also { Instance = it }
             }
         }
     }
